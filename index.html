@@ -145,7 +145,7 @@
       </div>
     </section>
 
-    <!-- PROFIL ORGANISASI & KALENDER (Diperbaiki agar tidak terpotong) -->
+    <!-- PROFIL ORGANISASI & KALENDER -->
     <section id="profil-organisasi" class="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -159,7 +159,7 @@
                 Badan Perencanaan Pembangunan Daerah (BAPPEDA) Kabupaten Ogan Komering Ilir merupakan unsur penunjang urusan pemerintahan bidang perencanaan yang menjadi kewenangan daerah. BAPPEDA mempunyai tugas pokok membantu Bupati dalam melaksanakan tugas penunjang urusan pemerintahan di bidang perencanaan pembangunan daerah dengan dasar sesuai Peraturan Bupati Nomor 70 Tahun 2021 tentang Organisasi dan Tata kerja Badan Perencanaan Pembangunan Daerah Kabupaten Ogan Komering Ilir.
               </p>
               <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-justify">  
-                Selanjutnya dalam melaksanakan tugas dan fungsinya, Kepala Bappeda dibantu oleh 5 Orang Pejabat Struktural yaitu Sekrtaris (eselon III.a) yang dibantu oleh 3 Kasubbag (eselon IV.a) yaitu Kasubag Umum dan Kepegawaian, Kasubag Keuangan, dan Kasubag Perencanaan. Selanjutnya tugas teknis dibantu oleh 4 eselon III.b yaitu Kepala Bidang Perencanaan, pengendalian, dan evaluasi pembangunan daerah (PPEPD), Kabid Pemerintahan dan Pembangunan Manusia (PPM), Kabid Perekonomian dan SDA (PSDA), dan Kabid Infrastruktur Kewilayahan (IFWIL).
+                Selanjutnya secara tugas Teknis, Kaban dibantu oleh 4 Orang Pejabat Struktural eselon III.b yaitu Kepala Bidang Perencanaan, pengendalian, dan evaluasi pembangunan daerah (PPEPD), Kabid Pemerintahan dan Pembangunan Manusia (PPM), Kabid Perekonomian dan SDA (PSDA), dan Kabid Infrastruktur Kewilayahan (IFWIL).
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@
       </div>
     </section>
 
-    <!-- PANEL ADMIN EDIT PORTAL (Akan muncul setelah login berhasil) -->
+    <!-- PANEL ADMIN EDIT PORTAL -->
     <section id="adminSection" class="hidden py-10 bg-amber-50 dark:bg-slate-900/80 border-b border-amber-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl border border-amber-500/30">
@@ -209,14 +209,14 @@
             </button>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
-            Selamat datang administrator! Anda dapat memperbarui data dokumen perencanaan, indikator makro, atau tautan web langsung melalui Google Spreadsheet, lalu data akan otomatis tersinkronisasi di portal ini.
+            Selamat datang administrator! Anda dapat memperbarui data dokumen perencanaan, indikator makro, atau tautan web langsung melalui Google Spreadsheet.
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <a href="https://docs.google.com/spreadsheets/d/1W_YourSheetIdHere/edit" target="_blank" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-amber-500 transition block text-center">
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
               <i class="fa-solid fa-file-excel text-emerald-600 text-2xl mb-2"></i>
               <h4 class="font-bold text-sm text-slate-900 dark:text-white">Edit Spreadsheet Utama</h4>
               <p class="text-xs text-slate-500 mt-1">Kelola data dokumen, makro, dan web</p>
-            </a>
+            </div>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
               <i class="fa-solid fa-folder-open text-blue-600 text-2xl mb-2"></i>
               <h4 class="font-bold text-sm text-slate-900 dark:text-white">Galeri Google Drive</h4>
@@ -225,7 +225,7 @@
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
               <i class="fa-solid fa-sync text-amber-600 text-2xl mb-2"></i>
               <h4 class="font-bold text-sm text-slate-900 dark:text-white">Sinkronisasi Data</h4>
-              <p class="text-xs text-slate-500 mt-1">Data otomatis sinkron saat halaman dimuat ulang</p>
+              <p class="text-xs text-slate-500 mt-1">Data otomatis sinkron saat halaman dimuat</p>
             </div>
           </div>
         </div>
@@ -277,87 +277,61 @@
         </div>
       </section>
 
-      <!-- PORTAL APLIKASI BAPPEDA OKI -->
-      <section id="portal-aplikasi" class="space-y-6">
+      <!-- PORTAL APLIKASI BAPPEDA OKI (DISEMATKAN DENGAN IFRAME BARU) -->
+      <section id="portal-aplikasi" class="space-y-12">
         <div class="text-center max-w-3xl mx-auto mb-2">
           <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Sistem Informasi Terpadu</span>
           <h2 class="text-2xl sm:text-3xl font-black mt-1 text-slate-900 dark:text-white">Portal Aplikasi Bappeda OKI</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-2">Akses seluruh sistem perencanaan dan evaluasi terintegrasi langsung di bawah ini.</p>
         </div>
 
-        <!-- SECTION SIMONEV & AKIP -->
-        <section id="simonev">
-          <div class="bg-gradient-to-r from-blue-900 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
-            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div class="lg:col-span-7 space-y-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-extrabold uppercase tracking-widest">
-                  <i class="fa-solid fa-chart-line text-amber-400"></i> Monitoring & Akuntabilitas Kinerja
-                </span>
-                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                  SiMonev+ & AKIP <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-emerald-300">Kabupaten OKI</span>
-                </h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  Sistem Informasi Monitoring, Evaluasi, dan Akuntabilitas Kinerja Instansi Pemerintah untuk memantau progres penyerapan anggaran dan capaian target kinerja perangkat daerah.
-                </p>
-              </div>
-              <div class="lg:col-span-5 flex flex-col justify-center">
-                <a href="https://script.google.com/macros/s/AKfycbxB_5Ubz4JxXfx1KM3_gqFEJdgYF7IzJTdqkzjI3hVkwAf0NNtffM8JojtWo5PYpDCLFA/exec" target="_blank" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
-                  <i class="fa-solid fa-external-link-alt"></i> Buka SiMonev+ AKIP OKI
-                </a>
-              </div>
+        <!-- 1. SIMONEV+ & AKIP -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
+            <div>
+              <span class="px-3 py-1 bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold rounded-lg">Monitoring & Evaluasi</span>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">SiMonev+ & AKIP Kabupaten OKI</h3>
             </div>
+            <a href="https://script.google.com/macros/s/AKfycbxB_5Ubz4JxXfx1KM3_gqFEJdgYF7IzJTdqkzjI3hVkwAf0NNtffM8JojtWo5PYpDCLFA/exec" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow">
+              <i class="fa-solid fa-external-link-alt"></i> Buka di Tab Baru
+            </a>
           </div>
-        </section>
+          <div class="w-full h-[750px] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
+            <iframe src="https://script.google.com/macros/s/AKfycbxB_5Ubz4JxXfx1KM3_gqFEJdgYF7IzJTdqkzjI3hVkwAf0NNtffM8JojtWo5PYpDCLFA/exec" class="w-full h-full border-0" allow="geolocation; microphone; camera"></iframe>
+          </div>
+        </div>
 
-        <!-- SECTION GEOPLAN OKI -->
-        <section id="GeoPlan" class="mt-6">
-          <div class="bg-gradient-to-r from-green-900 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
-            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-green-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div class="lg:col-span-7 space-y-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-400/30 text-green-300 text-xs font-extrabold uppercase tracking-widest">
-                  <i class="fa-solid fa-map-location-dot text-amber-400"></i> GeoPlan Perencanaan Pembangunan
-                </span>
-                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                  GeoPlan <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Kabupaten OKI</span>
-                </h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  GeoPlan memuat Informasi Sarana Infrastruktur berbasis Spasial sebagai bahan Penyusunan Perencanaan Pembangunan Daerah berbasis wilayah di tingkat desa.
-                </p>
-              </div>
-              <div class="lg:col-span-5 flex flex-col justify-center">
-                <a href="https://script.google.com/macros/s/AKfycbzowWmlO48VoYjx9JYHeeGAytjCyuxcLYeWj8no6Jt-UEQs1zs0YR2xAtfs-sLUZZOcog/exec" target="_blank" class="w-full py-3.5 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
-                  <i class="fa-solid fa-external-link-alt"></i> Buka GeoPlan OKI
-                </a>
-              </div>
+        <!-- 2. GEOPLAN OKI -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
+            <div>
+              <span class="px-3 py-1 bg-green-50 text-green-600 dark:bg-green-950 dark:text-green-300 text-xs font-bold rounded-lg">Spasial & Infrastruktur</span>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">GeoPlan Perencanaan Pembangunan OKI</h3>
             </div>
+            <a href="https://script.google.com/macros/s/AKfycbyjbY6vNfh65_Wez_8Dgs7RSRG5CSrT8Mig9hJG37cO21HB0ORidIgH6mctaqntoQKqWQ/exec" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow">
+              <i class="fa-solid fa-external-link-alt"></i> Buka di Tab Baru
+            </a>
           </div>
-        </section>
+          <div class="w-full h-[750px] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
+            <iframe src="https://script.google.com/macros/s/AKfycbyjbY6vNfh65_Wez_8Dgs7RSRG5CSrT8Mig9hJG37cO21HB0ORidIgH6mctaqntoQKqWQ/exec" class="w-full h-full border-0" allow="geolocation; microphone; camera"></iframe>
+          </div>
+        </div>
 
-        <!-- SECTION SIPADU OKI (ORANYE) -->
-        <section id="SIPADU" class="mt-6">
-          <div class="bg-gradient-to-r from-amber-700 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
-            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div class="lg:col-span-7 space-y-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-extrabold uppercase tracking-widest">
-                  <i class="fa-solid fa-database text-amber-400"></i> Sistem Integrasi Proposal & Data Usulan
-                </span>
-                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                  SIPADU <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300">Kabupaten OKI</span>
-                </h3>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  SIPADU OKI adalah Sistem Informasi Pemaduan Usulan Perencanaan Pembangunan berbasis web yang dirancang untuk secara otomatis memproses, menganalisis, dan mencocokkan ribuan POKIR DPRD dan Usulan Masyarakat dengan Program Prioritas (Termasuk SPM & ProSN).
-                </p>
-              </div>
-              <div class="lg:col-span-5 flex flex-col justify-center">
-                <a href="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" target="_blank" class="w-full py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
-                  <i class="fa-solid fa-external-link-alt"></i> Buka SIPADU OKI
-                </a>
-              </div>
+        <!-- 3. SIPADU OKI -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
+            <div>
+              <span class="px-3 py-1 bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300 text-xs font-bold rounded-lg">Integrasi Proposal & Usulan</span>
+              <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">SIPADU Kabupaten OKI</h3>
             </div>
+            <a href="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" target="_blank" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow">
+              <i class="fa-solid fa-external-link-alt"></i> Buka di Tab Baru
+            </a>
           </div>
-        </section>
+          <div class="w-full h-[750px] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
+            <iframe src="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" class="w-full h-full border-0" allow="geolocation; microphone; camera"></iframe>
+          </div>
+        </div>
       </section>
 
       <!-- SECTION WEB RELEVAN / TAUTAN TERKAIT -->
@@ -419,7 +393,7 @@
     </div>
   </footer>
 
-  <!-- MODAL LOGIN (Disesuaikan dengan Username & Password dari Sheet) -->
+  <!-- MODAL LOGIN -->
   <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 relative">
       <button type="button" onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
@@ -455,7 +429,6 @@
 
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec';
 
-    // Fetch Semua Data Terpadu dari Apps Script Endpoint
     function fetchAllPortalData() {
       fetch(APPS_SCRIPT_URL)
         .then(response => response.json())
@@ -505,7 +478,6 @@
       container.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
     }
 
-    // Render Kalender Digital
     function renderCalendar() {
       const grid = document.getElementById('calendarDaysGrid');
       const title = document.getElementById('currentMonthYear');
@@ -529,7 +501,6 @@
       }
     }
 
-    // Render Web Relevan (Tautan Eksternal dari Sheet Data_Web_Relevan)
     function renderWebLinks() {
       const grid = document.getElementById('publicWebLinksGrid');
       if (!grid) return;
@@ -550,7 +521,6 @@
       });
     }
 
-    // Render Indikator Makro & Chart.js
     function initMacroSection() {
       const uniqueIndicators = [...new Set(macroDataStore.map(item => item.indikator))];
       const tabsContainer = document.getElementById('indicatorFilterTabs');
@@ -620,7 +590,6 @@
       }
     }
 
-    // Render Galeri Foto
     function renderGallery() {
       const galleryGrid = document.getElementById('publicGalleryGrid');
       if (!galleryGrid) return;
@@ -639,7 +608,6 @@
       });
     }
 
-    // Admin Login Handler via Fetch ke Apps Script
     function handleLogin(e) {
       e.preventDefault();
       const usernameInput = document.getElementById('adminUsernameInput').value;
@@ -662,19 +630,16 @@
           closeLoginModal();
           showToast('Login Berhasil! Selamat datang ' + (data.nama || 'Admin'), 'success');
           
-          // Tampilkan Panel Admin di Halaman Utama
           const adminSec = document.getElementById('adminSection');
           if (adminSec) adminSec.classList.remove('hidden');
           const navAdmin = document.getElementById('navAdmin');
           if (navAdmin) navAdmin.classList.remove('hidden');
           
-          // Ubah tombol login di header menjadi info user
           const authArea = document.getElementById('authArea');
           if (authArea) {
             authArea.innerHTML = `<span class="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-3 py-2 rounded-xl border border-emerald-200">Hai, ${data.nama || 'Admin'}</span>`;
           }
 
-          // Scroll otomatis ke panel admin
           window.location.hash = '#adminSection';
         } else {
           showToast(data.message || 'Username atau password salah!', 'error');
@@ -713,7 +678,6 @@
       setTimeout(() => { toast.remove(); }, 3000);
     }
 
-    // Theme Toggle
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const themeIcon = document.getElementById('themeIcon');
     if (themeToggleBtn) {
@@ -727,7 +691,6 @@
       });
     }
 
-    // Jalankan inisialisasi saat DOM siap
     document.addEventListener("DOMContentLoaded", () => {
       fetchAllPortalData();
       renderCalendar();
