@@ -625,12 +625,10 @@
       const galleryGrid = document.getElementById('publicGalleryGrid');
       if (!galleryGrid) return;
       galleryGrid.innerHTML = '';
-      galleryDataStore.forEach(photo => {
-        // Amankan tanda kutip pada judul untuk fungsi JavaScript
-        const safeTitle = (photo.judul || '').replace(/'/g, "\\'");
+      galleryDataStore.forEach((photo, index) => {
         galleryGrid.innerHTML += `
           <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group flex flex-col">
-            <div class="h-52 overflow-hidden relative cursor-pointer" onclick="openImageModal('${photo.url}', '${safeTitle}')">
+            <div class="h-52 overflow-hidden relative cursor-pointer" onclick="openImageModal(${index})">
               <img src="${photo.url}" alt="${photo.judul}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
               <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                 <span class="bg-slate-900/90 text-white text-xs px-3 py-2 rounded-xl font-bold shadow-lg flex items-center gap-2">
@@ -645,7 +643,7 @@
           </div>`;
       });
     }
-
+    
     function handleLogin(e) {
       e.preventDefault();
       const usernameInput = document.getElementById('adminUsernameInput').value;
@@ -733,6 +731,40 @@
       fetchAllPortalData();
       renderCalendar();
     });
+  </script>
+  <!-- MODAL ZOOM FOTO GALERI -->
+  <div id="imageModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden items-center justify-center p-4" onclick="closeImageModal()">
+    <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button type="button" onclick="closeImageModal()" class="absolute -top-12 right-0 text-white hover:text-amber-400 text-2xl font-bold cursor-pointer transition">
+        <i class="fa-solid fa-xmark"></i> Tutup
+      </button>
+      <img id="modalImageSrc" src="" alt="Zoom Foto" class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-slate-700 bg-black">
+      <h3 id="modalImageTitle" class="mt-4 text-white text-center font-bold text-sm sm:text-base px-4"></h3>
+    </div>
+  </div>
+
+  <script>
+    window.openImageModal = function(index) {
+      const photo = galleryDataStore[index];
+      if (!photo) return;
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImageSrc');
+      const titleEl = document.getElementById('modalImageTitle');
+      if (modal && img) {
+        img.src = photo.url;
+        if (titleEl) titleEl.innerText = photo.judul || '';
+        modal.classList.remove('hidden');
+        modal.style.display = 'flex';
+      }
+    };
+
+    window.closeImageModal = function() {
+      const modal = document.getElementById('imageModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.style.display = 'none';
+      }
+    };
   </script>
 </body>
 </html>
