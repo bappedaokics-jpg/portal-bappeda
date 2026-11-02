@@ -271,16 +271,17 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-5" id="macroCardsGrid"></div>
       </section>
 
-      <!-- GALERI FOTO -->
-      <section id="galeri">
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <span class="text-xs font-extrabold text-blue-600 uppercase tracking-widest">Dokumentasi Kegiatan</span>
-          <h2 class="text-2xl sm:text-3xl font-black mt-1">Galeri Bappeda OKI</h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="publicGalleryGrid">
-          <div class="col-span-full text-center py-10 text-slate-400 text-sm">Memuat galeri foto dari Google Drive...</div>
-        </div>
-      </section>
+     <!-- GALERI FOTO -->
+<section id="galeri">
+  <div class="text-center max-w-3xl mx-auto mb-10">
+    <span class="text-xs font-extrabold text-blue-600 uppercase tracking-widest">Dokumentasi Kegiatan</span>
+    <h2 class="text-2xl sm:text-3xl font-black mt-1">Galeri Bappeda OKI</h2>
+  </div>
+  <!-- Tambahkan items-start di sini -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start" id="publicGalleryGrid">
+    <div class="col-span-full text-center py-10 text-slate-400 text-sm">Memuat galeri foto dari Google Drive...</div>
+  </div>
+</section>
 
       <!-- PORTAL APLIKASI BAPPEDA OKI -->
       <section id="portal-aplikasi" class="space-y-6">
@@ -620,16 +621,22 @@
         });
       }
     }
-
-   function renderGallery() {
+    function renderGallery() {
       const galleryGrid = document.getElementById('publicGalleryGrid');
       if (!galleryGrid) return;
       galleryGrid.innerHTML = '';
       galleryDataStore.forEach(photo => {
+        // Amankan tanda kutip pada judul untuk fungsi JavaScript
+        const safeTitle = (photo.judul || '').replace(/'/g, "\\'");
         galleryGrid.innerHTML += `
-          <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group flex flex-col justify-between">
-            <div class="h-52 overflow-hidden relative">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group flex flex-col">
+            <div class="h-52 overflow-hidden relative cursor-pointer" onclick="openImageModal('${photo.url}', '${safeTitle}')">
               <img src="${photo.url}" alt="${photo.judul}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <span class="bg-slate-900/90 text-white text-xs px-3 py-2 rounded-xl font-bold shadow-lg flex items-center gap-2">
+                  <i class="fa-solid fa-magnifying-glass-plus"></i> Klik untuk Perbesar
+                </span>
+              </div>
             </div>
             <div class="p-4">
               <h4 class="font-bold text-sm text-slate-900 dark:text-white leading-snug">${photo.judul}</h4>
