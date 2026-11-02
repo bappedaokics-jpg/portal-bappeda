@@ -621,7 +621,7 @@
       }
     }
 
-    function renderGallery() {
+   function renderGallery() {
       const galleryGrid = document.getElementById('publicGalleryGrid');
       if (!galleryGrid) return;
       galleryGrid.innerHTML = '';
@@ -632,7 +632,7 @@
               <img src="${photo.url}" alt="${photo.judul}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
             <div class="p-4">
-              <h4 class="font-bold text-sm text-slate-900 dark:text-white line-clamp-2 leading-snug">${photo.judul}</h4>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white leading-snug">${photo.judul}</h4>
               <p class="text-xs text-slate-500 mt-2">Dokumentasi Bappeda Kabupaten OKI</p>
             </div>
           </div>`;
