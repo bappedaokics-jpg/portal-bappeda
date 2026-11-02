@@ -78,12 +78,13 @@
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
 
   <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
-  <header class="sticky top-0 z-40 glassmorphism shadow-sm transition-all duration-300">
+<header class="sticky top-0 z-40 glassmorphism shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3.5">
-        <div class="p-1 rounded-xl bg-transparent dark:bg-white dark:p-1 dark:rounded-xl">
-  <img src="https://lh3.googleusercontent.com/d/1iQdEV7ifivADm98mkS21s7sGhygeXYCF" alt="Logo OKI" class="h-12 w-auto object-contain mix-blend-multiply dark:mix-blend-normal">
-</div>
+        <!-- Logo dengan latar putih tipis di mode gelap -->
+        <div class="p-1 rounded-xl bg-transparent dark:bg-white/90 dark:p-1.5 dark:rounded-xl">
+          <img src="https://lh3.googleusercontent.com/d/1iQdEV7ifivADm98mkS21s7sGhygeXYCF" alt="Logo OKI" class="h-12 w-auto object-contain mix-blend-multiply dark:mix-blend-normal">
+        </div>
         <div>
           <h1 class="font-extrabold text-lg sm:text-xl tracking-tight leading-none text-slate-900 dark:text-white">
             BAPPEDA <span class="text-blue-600 dark:text-blue-400">KAB. OKI</span>
@@ -91,7 +92,44 @@
           <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Badan Perencanaan Pembangunan Daerah</p>
         </div>
       </div>
+      <!-- Navigasi dan tombol lainnya tetap sama -->
+    </div>
+  </header>
 
+  <div id="berandaAnchor"></div>
+
+  <main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section id="heroSection" class="relative py-20 md:py-28 bg-cover bg-center transition-all duration-700" style="background-image: url('https://lh3.googleusercontent.com/d/1qDtWRSSoJJwNpKBe0b7OAnmSsyy8qiTc');">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/60 border border-white/20 text-blue-200 text-xs font-extrabold mb-4 uppercase tracking-widest shadow-md">
+          <i class="fa-solid fa-award text-amber-400"></i> Portal Resmi BAPPEDA Kabupaten OKI
+        </span>
+        
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight max-w-5xl mx-auto leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">
+          Perencanaan Pembangunan Berkelanjutan <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-emerald-200 to-amber-200 drop-shadow-none">Kabupaten Ogan Komering Ilir</span>
+        </h1>
+
+        <!-- Deskripsi dengan Background Abu-abu Semi-Transparan (Tanpa Bayangan Teks) -->
+        <div class="mt-5 max-w-3xl mx-auto bg-slate-950/60 backdrop-blur-sm px-6 py-3.5 rounded-2xl border border-white/10 shadow-xl inline-block">
+          <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
+            Bersama Mewujudkan Perencanaan Daerah yang Berkualitas, terpadu, berbasis data, transparan, dan berorientasi pada kesejahteraan masyarakat OKI.
+          </p>
+        </div>
+
+        <!-- RUNNING TEXT TICKER -->
+        <div class="mt-8 max-w-4xl mx-auto bg-slate-900/90 backdrop-blur-sm rounded-2xl border border-white/20 p-2.5 flex items-center gap-3 shadow-2xl">
+          <span class="bg-blue-600 text-white text-xs font-black px-3 py-1.5 rounded-xl shrink-0 flex items-center gap-1.5 shadow">
+            <i class="fa-solid fa-bullhorn text-amber-300"></i> INFO
+          </span>
+          <div class="marquee-container w-full text-xs sm:text-sm font-semibold text-slate-200">
+            <div class="marquee-content" id="runningNewsText">
+              Selamat Datang di Portal Resmi BAPPEDA Kabupaten Ogan Komering Ilir — Menyajikan Data Indikator Makro, Dokumen RPJPD 2025-2045, RPJMD 2025-2029 & RKPD secara Transparan dan Akuntabel.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
       <nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-600 dark:text-slate-300">
         <a href="#berandaAnchor" class="hover:text-blue-600">Beranda</a>
         <a href="#dokumen" class="hover:text-blue-600">Dokumen</a>
