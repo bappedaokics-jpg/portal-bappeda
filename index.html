@@ -59,10 +59,9 @@
     .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; text-align: center; }
 
     /* Styling Scrollbar Kustom */
-    .custom-scrollbar::-webkit-scrollbar { width: 12px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.06); border-radius: 8px; margin: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(100, 100, 100, 0.4); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(100, 100, 100, 0.7); border: 2px solid transparent; background-clip: padding-box; }
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.04); border-radius: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(100, 100, 100, 0.3); border-radius: 6px; }
   </style>
 
   <script>
@@ -145,24 +144,22 @@
       </div>
     </section>
 
-    <!-- PROFIL ORGANISASI & KALENDER -->
+    <!-- PROFIL ORGANISASI & KALENDER (Diperbaiki agar tidak terpotong) -->
     <section id="profil-organisasi" class="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           <!-- PROFIL ORGANISASI -->
-          <div class="lg:col-span-8 bg-slate-50 dark:bg-slate-800/50 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Tentang Instansi</span>
-              <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1 mb-4">Profil BAPPEDA</h2>
-              <div class="max-h-74 overflow-y-auto pr-2 custom-scrollbar space-y-4">
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-justify">
-                  Badan Perencanaan Pembangunan Daerah (BAPPEDA) Kabupaten Ogan Komering Ilir merupakan unsur penunjang urusan pemerintahan bidang perencanaan yang menjadi kewenangan daerah. BAPPEDA mempunyai tugas pokok membantu Bupati dalam melaksanakan tugas penunjang urusan pemerintahan di bidang perencanaan pembangunan daerah dengan dasar sesuai Peraturan Bupati Nomor 70 Tahun 2021 tentang Organisasi dan Tata kerja Badan Perencanaan Pembangunan Daerah Kabupaten Ogan Komering Ilir.
-                </p>
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-justify">  
-                  Selanjutnya secara tugas Teknis, Kaban dibantu oleh 4 Orang Pejabat Struktural eselon III.b yaitu Kepala Bidang Perencanaan, pengendalian, dan evaluasi pembangunan daerah (PPEPD), Kabid Pemerintahan dan Pembangunan Manusia (PPM), Kabid Perekonomian dan SDA (PSDA), dan Kabid Infrastruktur Kewilayahan (IFWIL).
-                </p>
-              </div>
+          <div class="lg:col-span-8 bg-slate-50 dark:bg-slate-800/50 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col">
+            <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-1">Tentang Instansi</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-4">Profil BAPPEDA</h2>
+            <div class="max-h-[340px] overflow-y-auto pr-3 custom-scrollbar space-y-4">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-justify">
+                Badan Perencanaan Pembangunan Daerah (BAPPEDA) Kabupaten Ogan Komering Ilir merupakan unsur penunjang urusan pemerintahan bidang perencanaan yang menjadi kewenangan daerah. BAPPEDA mempunyai tugas pokok membantu Bupati dalam melaksanakan tugas penunjang urusan pemerintahan di bidang perencanaan pembangunan daerah dengan dasar sesuai Peraturan Bupati Nomor 70 Tahun 2021 tentang Organisasi dan Tata kerja Badan Perencanaan Pembangunan Daerah Kabupaten Ogan Komering Ilir.
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-justify">  
+                Selanjutnya secara tugas Teknis, Kaban dibantu oleh 4 Orang Pejabat Struktural eselon III.b yaitu Kepala Bidang Perencanaan, pengendalian, dan evaluasi pembangunan daerah (PPEPD), Kabid Pemerintahan dan Pembangunan Manusia (PPM), Kabid Perekonomian dan SDA (PSDA), dan Kabid Infrastruktur Kewilayahan (IFWIL).
+              </p>
             </div>
           </div>
 
@@ -299,7 +296,7 @@
           </div>
         </section>
 
-        <!-- SECTION SIPADU OKI (ORANYE - DENGAN HALAMAN LOGIN/INTERAKTIF) -->
+        <!-- SECTION SIPADU OKI (ORANYE) -->
         <section id="SIPADU" class="mt-6">
           <div class="bg-gradient-to-r from-amber-700 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
             <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -316,8 +313,7 @@
                 </p>
               </div>
               <div class="lg:col-span-5 flex flex-col justify-center">
-                
-                <a href="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" target="_blank" class="w-full py-3.5 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
+                <a href="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" target="_blank" class="w-full py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
                   <i class="fa-solid fa-external-link-alt"></i> Buka SIPADU OKI
                 </a>
               </div>
@@ -347,7 +343,7 @@
               Sampaikan usulan, saran, dan aspirasi Anda untuk pembangunan Kabupaten Ogan Komering Ilir yang lebih baik dan tepat sasaran.
             </p>
             <a href="mailto:okibappeda@gmail.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-sm transition shadow-lg">
-              <i class="fa-brands fa-Email text-lg"></i> Kirim Aspirasi via Email
+              <i class="fa-solid fa-envelope text-lg"></i> Kirim Aspirasi via Email
             </a>
           </div>
         </div>
@@ -599,16 +595,18 @@
       });
     }
 
-    // Admin Login Handler
+    // Admin Login Handler (Diperbaiki agar tidak error/berfungsi normal)
     function handleLogin(e) {
       e.preventDefault();
       const pin = document.getElementById('adminPinInput').value;
       if (pin === '12345' || pin === 'adminOKI') {
         currentUser = true;
         closeLoginModal();
-        document.getElementById('adminSection').classList.remove('hidden');
-        document.getElementById('navAdmin').classList.remove('hidden');
         showToast('Login Admin Berhasil!', 'success');
+        const adminSec = document.getElementById('adminSection');
+        if (adminSec) adminSec.classList.remove('hidden');
+        const navAdmin = document.getElementById('navAdmin');
+        if (navAdmin) navAdmin.classList.remove('hidden');
       } else {
         showToast('PIN Admin Salah!', 'error');
       }
