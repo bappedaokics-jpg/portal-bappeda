@@ -99,6 +99,7 @@
         <a href="#galeri" class="hover:text-blue-600">Galeri</a>
         <a href="#portal-aplikasi" class="hover:text-blue-600">Portal-Aplikasi</a>
         <a href="#aspirasi" class="hover:text-blue-600">e-Aspirasi</a>
+        <a href="#adminSection" id="navAdmin" class="hidden text-amber-600 font-bold hover:underline"><i class="fa-solid fa-gauge-high"></i> Panel Admin</a>
       </nav>
 
       <div class="flex items-center gap-3">
@@ -190,6 +191,43 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL ADMIN EDIT PORTAL (Akan muncul setelah login berhasil) -->
+    <section id="adminSection" class="hidden py-10 bg-amber-50 dark:bg-slate-900/80 border-b border-amber-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-xl border border-amber-500/30">
+          <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
+            <div>
+              <span class="text-xs font-extrabold text-amber-600 uppercase tracking-widest">Panel Pengelolaan</span>
+              <h2 class="text-2xl font-black text-slate-900 dark:text-white">Menu Edit & Kelola Isi Portal Bappeda</h2>
+            </div>
+            <button type="button" onclick="handleLogout()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl transition shadow">
+              <i class="fa-solid fa-right-from-bracket"></i> Keluar Admin
+            </button>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
+            Selamat datang administrator! Anda dapat memperbarui data dokumen perencanaan, indikator makro, atau tautan web langsung melalui Google Spreadsheet, lalu data akan otomatis tersinkronisasi di portal ini.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <a href="https://docs.google.com/spreadsheets/d/1W_YourSheetIdHere/edit" target="_blank" class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-amber-500 transition block text-center">
+              <i class="fa-solid fa-file-excel text-emerald-600 text-2xl mb-2"></i>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Edit Spreadsheet Utama</h4>
+              <p class="text-xs text-slate-500 mt-1">Kelola data dokumen, makro, dan web</p>
+            </a>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
+              <i class="fa-solid fa-folder-open text-blue-600 text-2xl mb-2"></i>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Galeri Google Drive</h4>
+              <p class="text-xs text-slate-500 mt-1">Tambah/hapus foto di folder Drive galeri</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
+              <i class="fa-solid fa-sync text-amber-600 text-2xl mb-2"></i>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">Sinkronisasi Data</h4>
+              <p class="text-xs text-slate-500 mt-1">Data otomatis sinkron saat halaman dimuat ulang</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -329,7 +367,7 @@
           <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">Website & Portal Relevan</h3>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="publicWebLinksGrid">
-          <div class="text-slate-400 text-sm col-span-full text-center py-4">Memuat tautan web...</div>
+          <div class="text-slate-400 text-sm col-span-full text-center py-4">Memuat tautan web dari sheet...</div>
         </div>
       </section>
 
@@ -381,21 +419,25 @@
     </div>
   </footer>
 
-  <!-- MODAL LOGIN -->
+  <!-- MODAL LOGIN (Disesuaikan dengan Username & Password dari Sheet) -->
   <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 relative">
       <button type="button" onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
       <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Login Admin Bappeda</h3>
-      <p class="text-xs text-slate-500 mb-6">Masukkan PIN Admin untuk mengakses panel pengelolaan konten.</p>
+      <p class="text-xs text-slate-500 mb-6">Masukkan username dan password sesuai data pada Google Spreadsheet.</p>
       <form onsubmit="handleLogin(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold mb-1 text-slate-700 dark:text-slate-300">PIN Admin</label>
-          <input type="password" id="adminPinInput" required class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+          <label class="block text-xs font-bold mb-1 text-slate-700 dark:text-slate-300">Username</label>
+          <input type="text" id="adminUsernameInput" required placeholder="admin" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
         </div>
-        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition shadow-lg cursor-pointer">
-          Masuk Panel
+        <div>
+          <label class="block text-xs font-bold mb-1 text-slate-700 dark:text-slate-300">Password</label>
+          <input type="password" id="adminPasswordInput" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+        </div>
+        <button type="submit" id="loginBtn" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition shadow-lg cursor-pointer">
+          Masuk Panel Admin
         </button>
       </form>
     </div>
@@ -411,9 +453,11 @@
     let macroChartInstance = null;
     let currentUser = false;
 
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec';
+
     // Fetch Semua Data Terpadu dari Apps Script Endpoint
     function fetchAllPortalData() {
-      fetch('https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec')
+      fetch(APPS_SCRIPT_URL)
         .then(response => response.json())
         .then(data => {
           if (data.docs && data.docs.length > 0) {
@@ -595,21 +639,68 @@
       });
     }
 
-    // Admin Login Handler (Diperbaiki agar tidak error/berfungsi normal)
+    // Admin Login Handler via Fetch ke Apps Script
     function handleLogin(e) {
       e.preventDefault();
-      const pin = document.getElementById('adminPinInput').value;
-      if (pin === '12345' || pin === 'adminOKI') {
-        currentUser = true;
-        closeLoginModal();
-        showToast('Login Admin Berhasil!', 'success');
-        const adminSec = document.getElementById('adminSection');
-        if (adminSec) adminSec.classList.remove('hidden');
-        const navAdmin = document.getElementById('navAdmin');
-        if (navAdmin) navAdmin.classList.remove('hidden');
-      } else {
-        showToast('PIN Admin Salah!', 'error');
+      const usernameInput = document.getElementById('adminUsernameInput').value;
+      const passwordInput = document.getElementById('adminPasswordInput').value;
+      const loginBtn = document.getElementById('loginBtn');
+      
+      loginBtn.innerText = "Memeriksa...";
+      loginBtn.disabled = true;
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: "login", username: usernameInput, password: passwordInput })
+      })
+      .then(res => res.json())
+      .then(data => {
+        loginBtn.innerText = "Masuk Panel Admin";
+        loginBtn.disabled = false;
+        if (data.success) {
+          currentUser = true;
+          closeLoginModal();
+          showToast('Login Berhasil! Selamat datang ' + (data.nama || 'Admin'), 'success');
+          
+          // Tampilkan Panel Admin di Halaman Utama
+          const adminSec = document.getElementById('adminSection');
+          if (adminSec) adminSec.classList.remove('hidden');
+          const navAdmin = document.getElementById('navAdmin');
+          if (navAdmin) navAdmin.classList.remove('hidden');
+          
+          // Ubah tombol login di header menjadi info user
+          const authArea = document.getElementById('authArea');
+          if (authArea) {
+            authArea.innerHTML = `<span class="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-3 py-2 rounded-xl border border-emerald-200">Hai, ${data.nama || 'Admin'}</span>`;
+          }
+
+          // Scroll otomatis ke panel admin
+          window.location.hash = '#adminSection';
+        } else {
+          showToast(data.message || 'Username atau password salah!', 'error');
+        }
+      })
+      .catch(err => {
+        loginBtn.innerText = "Masuk Panel Admin";
+        loginBtn.disabled = false;
+        showToast('Terjadi kesalahan koneksi ke server.', 'error');
+        console.error(err);
+      });
+    }
+
+    function handleLogout() {
+      currentUser = false;
+      const adminSec = document.getElementById('adminSection');
+      if (adminSec) adminSec.classList.add('hidden');
+      const navAdmin = document.getElementById('navAdmin');
+      if (navAdmin) navAdmin.classList.add('hidden');
+      
+      const authArea = document.getElementById('authArea');
+      if (authArea) {
+        authArea.innerHTML = `<button type="button" onclick="openLoginModal()" class="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md transition flex items-center gap-2 cursor-pointer"><i class="fa-solid fa-right-to-bracket"></i> Login</button>`;
       }
+      showToast('Berhasil keluar dari panel admin.', 'success');
+      window.location.hash = '#berandaAnchor';
     }
 
     function showToast(message, type = 'success') {
