@@ -41,6 +41,7 @@
     .marquee-content { display: inline-block; padding-left: 100%; animation: marquee 25s linear infinite; }
     @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
+    /* Slider Dokumen Satu Baris */
     .docs-slider {
       display: flex;
       overflow-x: auto;
@@ -54,7 +55,10 @@
     .docs-slider::-webkit-scrollbar-thumb { background: rgba(150, 150, 150, 0.4); border-radius: 4px; }
     .doc-card-item { flex: 0 0 320px; scroll-snap-align: start; }
 
+    /* Kalender Digital */
     .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; text-align: center; }
+
+    /* Styling Scrollbar Kustom */
     .custom-scrollbar::-webkit-scrollbar { width: 8px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.04); border-radius: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(100, 100, 100, 0.3); border-radius: 6px; }
@@ -74,7 +78,6 @@
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
 
   <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
-  
   <header class="sticky top-0 z-40 glassmorphism shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3.5">
@@ -94,8 +97,7 @@
         <a href="#dokumen" class="hover:text-blue-600">Dokumen</a>
         <a href="#indikator" class="hover:text-blue-600">Indikator</a>
         <a href="#galeri" class="hover:text-blue-600">Galeri</a>
-        <a href="#portal-sipadu" class="hover:text-blue-600">SIPADU</a>
-        <a href="#portal-aplikasi" class="hover:text-blue-600">Portal Lainnya</a>
+        <a href="#portal-aplikasi" class="hover:text-blue-600">Portal-Aplikasi</a>
         <a href="#aspirasi" class="hover:text-blue-600">e-Aspirasi</a>
         <a href="#adminSection" id="navAdmin" class="hidden text-amber-600 font-bold hover:underline"><i class="fa-solid fa-gauge-high"></i> Panel Admin</a>
       </nav>
@@ -148,6 +150,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
+          <!-- PROFIL ORGANISASI -->
           <div class="lg:col-span-8 bg-slate-50 dark:bg-slate-800/50 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col">
             <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-1">Tentang Instansi</span>
             <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-4">Profil BAPPEDA</h2>
@@ -161,6 +164,7 @@
             </div>
           </div>
 
+          <!-- KALENDER DIGITAL & MEDIA SOSIAL -->
           <div class="lg:col-span-4 space-y-6">
             <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
               <div class="flex justify-between items-center mb-4">
@@ -205,13 +209,13 @@
             </button>
           </div>
           <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">
-            Selamat datang administrator! Anda dapat memperbarui data dokumen perencanaan, indikator makro, atau tautan web langsung melalui Google Spreadsheet.
+            Selamat datang administrator! Anda dapat memperbarui data dokumen perencanaan, indikator makro, atau tautan web langsung melalui Google Spreadsheet, lalu data akan otomatis tersinkronisasi di portal ini.
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
               <i class="fa-solid fa-file-excel text-emerald-600 text-2xl mb-2"></i>
               <h4 class="font-bold text-sm text-slate-900 dark:text-white">Edit Spreadsheet Utama</h4>
-              <p class="text-xs text-slate-500 mt-1">Kelola data dokumen, makro, dan web</p>
+              <p class="text-xs text-slate-500 mt-1">Kelola data dokumen, makro, dan web di Google Sheets</p>
             </div>
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
               <i class="fa-solid fa-folder-open text-blue-600 text-2xl mb-2"></i>
@@ -221,7 +225,7 @@
             <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
               <i class="fa-solid fa-sync text-amber-600 text-2xl mb-2"></i>
               <h4 class="font-bold text-sm text-slate-900 dark:text-white">Sinkronisasi Data</h4>
-              <p class="text-xs text-slate-500 mt-1">Data otomatis sinkron saat halaman dimuat</p>
+              <p class="text-xs text-slate-500 mt-1">Data otomatis sinkron saat halaman dimuat ulang</p>
             </div>
           </div>
         </div>
@@ -273,99 +277,87 @@
         </div>
       </section>
 
-      <!-- 1. SIPADU OKI (NATIVE VERCEL FRONTEND - TANPA BANNER GOOGLE) -->
-      <section id="portal-sipadu" class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800 space-y-6">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <span class="px-3 py-1 bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-300 text-xs font-bold rounded-lg">Integrasi Proposal & Usulan</span>
-            <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">SIPADU Kabupaten OKI</h3>
-            <p class="text-xs text-slate-500 mt-1">Sistem Analisis POKIR DPRD & Musrenbang berbasis Prioritas Anggaran.</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <a href="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" target="_blank" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-external-link-alt"></i> Panel Admin SIPADU
-            </a>
-            <button type="button" onclick="loadSipaduData()" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow cursor-pointer">
-              <i class="fa-solid fa-rotate"></i> Muat Ulang
-            </button>
-          </div>
-        </div>
-
-        <!-- Filter & Search Bar -->
-        <div class="flex flex-col sm:flex-row gap-3 items-center justify-between">
-          <div class="w-full sm:w-72">
-            <input type="text" id="sipaduSearch" placeholder="Cari usulan / OPD / pengusul..." onkeyup="filterSipaduTable()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-800 dark:text-white">
-          </div>
-          <div class="flex gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0">
-            <button type="button" onclick="filterSipaduCategory('Semua')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-amber-600 hover:text-white transition">Semua</button>
-            <button type="button" onclick="filterSipaduCategory('Sangat Prioritas')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300">Sangat Prioritas</button>
-            <button type="button" onclick="filterSipaduCategory('Prioritas Tinggi')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-300">Prioritas Tinggi</button>
-            <button type="button" onclick="filterSipaduCategory('Dipertimbangkan')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300">Dipertimbangkan</button>
-          </div>
-        </div>
-
-        <!-- Tabel Data Usulan SIPADU -->
-        <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700">
-          <table class="w-full text-left border-collapse">
-            <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[11px] uppercase tracking-wider">
-              <tr>
-                <th class="p-3.5">No</th>
-                <th class="p-3.5">ID / Sumber</th>
-                <th class="p-3.5">Pengusul</th>
-                <th class="p-3.5">Detail Usulan Pembangunan</th>
-                <th class="p-3.5">Lokasi</th>
-                <th class="p-3.5">OPD Tujuan</th>
-                <th class="p-3.5">Rekomendasi Bappeda</th>
-              </tr>
-            </thead>
-            <tbody id="sipaduTableBody" class="divide-y divide-slate-200 dark:divide-slate-800 text-xs text-slate-700 dark:text-slate-300">
-              <tr>
-                <td colspan="7" class="text-center py-8 text-slate-400">Memuat data usulan SIPADU...</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- PORTAL APLIKASI LAINNYA (SI MONEV & GEOPLAN VIA IFRAME) -->
-      <section id="portal-aplikasi" class="space-y-12">
+      <!-- PORTAL APLIKASI BAPPEDA OKI -->
+      <section id="portal-aplikasi" class="space-y-6">
         <div class="text-center max-w-3xl mx-auto mb-2">
-          <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Sistem Informasi Terpadu Lainnya</span>
+          <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Sistem Informasi Terpadu</span>
           <h2 class="text-2xl sm:text-3xl font-black mt-1 text-slate-900 dark:text-white">Portal Aplikasi Bappeda OKI</h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-2">Akses monitoring evaluasi dan perencanaan spasial terintegrasi di bawah ini.</p>
         </div>
 
-        <!-- SIMONEV+ & AKIP -->
-        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
-            <div>
-              <span class="px-3 py-1 bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold rounded-lg">Monitoring & Evaluasi</span>
-              <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">SiMonev+ & AKIP Kabupaten OKI</h3>
+        <!-- SECTION SIMONEV & AKIP -->
+        <section id="simonev">
+          <div class="bg-gradient-to-r from-blue-900 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-extrabold uppercase tracking-widest">
+                  <i class="fa-solid fa-chart-line text-amber-400"></i> Monitoring & Akuntabilitas Kinerja
+                </span>
+                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                  SiMonev+ & AKIP <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-emerald-300">Kabupaten OKI</span>
+                </h3>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Sistem Informasi Monitoring, Evaluasi, dan Akuntabilitas Kinerja Instansi Pemerintah untuk memantau progres penyerapan anggaran dan capaian target kinerja perangkat daerah.
+                </p>
+              </div>
+              <div class="lg:col-span-5 flex flex-col justify-center">
+                <a href="https://script.google.com/macros/s/AKfycbxB_5Ubz4JxXfx1KM3_gqFEJdgYF7IzJTdqkzjI3hVkwAf0NNtffM8JojtWo5PYpDCLFA/exec" target="_blank" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
+                  <i class="fa-solid fa-external-link-alt"></i> Buka SiMonev+ AKIP OKI
+                </a>
+              </div>
             </div>
-            <a href="https://script.google.com/macros/s/AKfycbxB_5Ubz4JxXfx1KM3_gqFEJdgYF7IzJTdqkzjI3hVkwAf0NNtffM8JojtWo5PYpDCLFA/exec" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow">
-              <i class="fa-solid fa-external-link-alt"></i> Buka di Tab Baru
-            </a>
           </div>
-          <div class="w-full h-[750px] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
-            <iframe src="https://script.google.com/macros/s/AKfycbxB_5Ubz4JxXfx1KM3_gqFEJdgYF7IzJTdqkzjI3hVkwAf0NNtffM8JojtWo5PYpDCLFA/exec" class="w-full h-full border-0" allow="geolocation; microphone; camera"></iframe>
-          </div>
-        </div>
+        </section>
 
-        <!-- GEOPLAN OKI -->
-        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800">
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
-            <div>
-              <span class="px-3 py-1 bg-green-50 text-green-600 dark:bg-green-950 dark:text-green-300 text-xs font-bold rounded-lg">Spasial & Infrastruktur</span>
-              <h3 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">GeoPlan Perencanaan Pembangunan OKI</h3>
+        <!-- SECTION GEOPLAN OKI -->
+        <section id="GeoPlan" class="mt-6">
+          <div class="bg-gradient-to-r from-green-900 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-green-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 border border-green-400/30 text-green-300 text-xs font-extrabold uppercase tracking-widest">
+                  <i class="fa-solid fa-map-location-dot text-amber-400"></i> GeoPlan Perencanaan Pembangunan
+                </span>
+                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                  GeoPlan <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Kabupaten OKI</span>
+                </h3>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  GeoPlan memuat Informasi Sarana Infrastruktur berbasis Spasial sebagai bahan Penyusunan Perencanaan Pembangunan Daerah berbasis wilayah di tingkat desa.
+                </p>
+              </div>
+              <div class="lg:col-span-5 flex flex-col justify-center">
+                <a href="https://script.google.com/macros/s/AKfycbzowWmlO48VoYjx9JYHeeGAytjCyuxcLYeWj8no6Jt-UEQs1zs0YR2xAtfs-sLUZZOcog/exec" target="_blank" class="w-full py-3.5 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
+                  <i class="fa-solid fa-external-link-alt"></i> Buka GeoPlan OKI
+                </a>
+              </div>
             </div>
-            <a href="https://script.google.com/macros/s/AKfycbyjbY6vNfh65_Wez_8Dgs7RSRG5CSrT8Mig9hJG37cO21HB0ORidIgH6mctaqntoQKqWQ/exec" target="_blank" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow">
-              <i class="fa-solid fa-external-link-alt"></i> Buka di Tab Baru
-            </a>
           </div>
-          <div class="w-full h-[750px] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
-            <iframe src="https://script.google.com/macros/s/AKfycbyjbY6vNfh65_Wez_8Dgs7RSRG5CSrT8Mig9hJG37cO21HB0ORidIgH6mctaqntoQKqWQ/exec" class="w-full h-full border-0" allow="geolocation; microphone; camera"></iframe>
+        </section>
+
+        <!-- SECTION SIPADU OKI (ORANYE) -->
+        <section id="SIPADU" class="mt-6">
+          <div class="bg-gradient-to-r from-amber-700 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-extrabold uppercase tracking-widest">
+                  <i class="fa-solid fa-database text-amber-400"></i> Sistem Informasi Pemaduan Usulan Renbang
+                </span>
+                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                  SIPADU <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300">Kabupaten OKI</span>
+                </h3>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  SIPADU OKI adalah Sistem Informasi Pemaduan Usulan Perencanaan Pembangunan aplikasi web berbasis yang dirancang untuk secara otomatis memproses, menganalisis, dan mencocokkan ribuan usulan POKIR DPRD, usulan masyarakat dalam SIPD diarahkan mendukung Program Prioritas (Termasuk SPM dan ProSN).
+                </p>
+              </div>
+              <div class="lg:col-span-5 flex flex-col justify-center">
+                <a href="https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec" target="_blank" class="w-full py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
+                  <i class="fa-solid fa-external-link-alt"></i> Buka SIPADU OKI
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </section>
 
       <!-- SECTION WEB RELEVAN / TAUTAN TERKAIT -->
@@ -412,8 +404,7 @@
         <ul class="space-y-2 text-xs">
           <li><a href="#dokumen" class="hover:text-white transition">Dokumen Perencanaan</a></li>
           <li><a href="#indikator" class="hover:text-white transition">Indikator Makro</a></li>
-          <li><a href="#portal-sipadu" class="hover:text-white transition">SIPADU OKI</a></li>
-          <li><a href="#portal-aplikasi" class="hover:text-white transition">Portal Aplikasi Lainnya</a></li>
+          <li><a href="#portal-aplikasi" class="hover:text-white transition">Portal Aplikasi</a></li>
         </ul>
       </div>
       <div>
@@ -458,17 +449,11 @@
     let macroDataStore = [];
     let galleryDataStore = [];
     let webLinksDataStore = [];
-    let sipaduRawData = [];
-
     let currentMacroIndicator = "Pertumbuhan Ekonomi";
     let macroChartInstance = null;
     let currentUser = false;
 
-    // URL Apps Script Portal Utama
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec';
-    
-    // URL Apps Script SIPADU API
-    const SIPADU_API_URL = 'https://script.google.com/macros/s/AKfycbz8-peyd6wehlqH4lcfSAPzbXSPHH-7sWatdNaeOtsEeYJrehVP0JZtn5SzGPrRaRVvQA/exec?action=getUsulan';
 
     function fetchAllPortalData() {
       fetch(APPS_SCRIPT_URL)
@@ -492,81 +477,6 @@
           }
         })
         .catch(error => console.error('Error fetching portal data:', error));
-
-      loadSipaduData();
-    }
-
-    // LOAD DATA SIPADU NATIVE
-    function loadSipaduData() {
-      const tbody = document.getElementById('sipaduTableBody');
-      if(tbody) tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-400"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Mengambil data usulan SIPADU...</td></tr>`;
-
-      fetch(SIPADU_API_URL)
-        .then(res => res.json())
-        .then(response => {
-          if (response.status === 'success' && response.data) {
-            sipaduRawData = response.data;
-            renderSipaduTable(sipaduRawData);
-          } else {
-            tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-red-500">Gagal memuat data SIPADU: ${response.message || 'Data belum ditelaah'}</td></tr>`;
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-red-500">Terjadi kesalahan koneksi ke server SIPADU.</td></tr>`;
-        });
-    }
-
-    function renderSipaduTable(dataList) {
-      const tbody = document.getElementById('sipaduTableBody');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-
-      if (dataList.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-400">Belum ada data hasil telaah SIPADU. Silakan jalankan penapisan di panel admin Spreadsheet.</td></tr>`;
-        return;
-      }
-
-      dataList.forEach((item, index) => {
-        const kategori = item.Kategori || 'Dipertimbangkan';
-        let badgeColor = 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
-        if (kategori.toLowerCase().includes('sangat')) badgeColor = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
-        else if (kategori.toLowerCase().includes('tinggi')) badgeColor = 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300';
-
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
-            <td class="p-3.5 font-bold">${index + 1}</td>
-            <td class="p-3.5 font-medium text-blue-600 dark:text-blue-400">${item.idUsulan}</td>
-            <td class="p-3.5">${item.Pengusul}</td>
-            <td class="p-3.5 max-w-xs font-semibold text-slate-900 dark:text-white">${item.Kegiatan}</td>
-            <td class="p-3.5">${item.Lokasi}</td>
-            <td class="p-3.5">${item.OPD}</td>
-            <td class="p-3.5">
-              <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold ${badgeColor}">${kategori}</span>
-            </td>
-          </tr>`;
-      });
-    }
-
-    function filterSipaduTable() {
-      const keyword = document.getElementById('sipaduSearch').value.toLowerCase();
-      const filtered = sipaduRawData.filter(item => {
-        const text = JSON.stringify(item).toLowerCase();
-        return text.includes(keyword);
-      });
-      renderSipaduTable(filtered);
-    }
-
-    function filterSipaduCategory(cat) {
-      if (cat === 'Semua') {
-        renderSipaduTable(sipaduRawData);
-      } else {
-        const filtered = sipaduRawData.filter(item => {
-          const kat = item.Kategori || '';
-          return kat.toLowerCase().includes(cat.toLowerCase());
-        });
-        renderSipaduTable(filtered);
-      }
     }
 
     function renderPublicDocs() {
