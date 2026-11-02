@@ -515,6 +515,29 @@
     let docsDataStore = [];
     let currentUser = false;
 
+    // Data Indikator Makro Pembangunan Kab. OKI
+    let macroDataStore = [
+      { tahun: "2023", indikator: "Pertumbuhan Ekonomi", target: "5.10", realisasi: "5.02", satuan: "%" },
+      { tahun: "2024", indikator: "Pertumbuhan Ekonomi", target: "5.20", realisasi: "5.15", satuan: "%" },
+      { tahun: "2025", indikator: "Pertumbuhan Ekonomi", target: "5.30", realisasi: "5.25", satuan: "%" },
+      { tahun: "2023", indikator: "Indeks Pembangunan Manusia (IPM)", target: "69.50", realisasi: "69.82", satuan: "Poin" },
+      { tahun: "2024", indikator: "Indeks Pembangunan Manusia (IPM)", target: "70.10", realisasi: "70.45", satuan: "Poin" },
+      { tahun: "2025", indikator: "Indeks Pembangunan Manusia (IPM)", target: "70.80", realisasi: "71.12", satuan: "Poin" },
+      { tahun: "2023", indikator: "Tingkat Kemiskinan", target: "13.20", realisasi: "13.05", satuan: "%" },
+      { tahun: "2024", indikator: "Tingkat Kemiskinan", target: "12.80", realisasi: "12.60", satuan: "%" },
+      { tahun: "2025", indikator: "Tingkat Kemiskinan", target: "12.20", realisasi: "11.95", satuan: "%" }
+    ];
+
+    // Data Galeri Foto Bappeda OKI
+    let galleryDataStore = [
+      { judul: "Gedung Kantor Bappeda Kabupaten OKI", url: "https://lh3.googleusercontent.com/d/1qDtWRSSoJJwNpKBe0b7OAnmSsyy8qiTc" },
+      { judul: "Musrenbang RKPD Kabupaten OKI", url: "https://lh3.googleusercontent.com/d/1iQdEV7ifivADm98mkS21s7sGhygeXYCF" },
+      { judul: "Rapat Koordinasi Perencanaan Pembangunan Daerah", url: "https://lh3.googleusercontent.com/d/1qDtWRSSoJJwNpKBe0b7OAnmSsyy8qiTc" }
+    ];
+
+    let currentMacroIndicator = "Pertumbuhan Ekonomi";
+    let macroChartInstance = null;
+
     // Fetch Dokumen dari Google Sheets Web App Endpoint
     function fetchDocsFromSheets() {
       fetch('https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec')
@@ -560,6 +583,105 @@
       } else {
         container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       }
+    }
+
+    // Render Indikator Makro & Chart.js
+    function initMacroSection() {
+      const uniqueIndicators = [...new Set(macroDataStore.map(item => item.indikator))];
+      const tabsContainer = document.getElementById('indicatorFilterTabs');
+      if (tabsContainer) {
+        tabsContainer.innerHTML = '';
+        uniqueIndicators.forEach(ind => {
+          const isActive = ind === currentMacroIndicator;
+          tabsContainer.innerHTML += `
+            <button type="button" onclick="switchMacroIndicator('${ind}')" class="px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition cursor-pointer ${isActive ? 'bg-blue-600 text-white shadow-md' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              ${ind}
+            </button>`;
+        });
+      }
+      renderMacroChartAndCards(currentMacroIndicator);
+    }
+
+    function switchMacroIndicator(indicatorName) {
+      currentMacroIndicator = indicatorName;
+      initMacroSection();
+    }
+
+    function renderMacroChartAndCards(indicatorName) {
+      const filtered = macroDataStore.filter(item => item.indikator === indicatorName);
+      const labels = filtered.map(i => i.tahun);
+      const targets = filtered.map(i => parseFloat(i.target));
+      const realizations = filtered.map(i => parseFloat(i.realisasi));
+      const satuan = filtered.length > 0 ? filtered[0].satuan : '';
+
+      const ctx = document.getElementById('mainMacroChart');
+      if (ctx) {
+        if (macroChartInstance) {
+          macroChartInstance.destroy();
+        }
+        macroChartInstance = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              { label: 'Target (' + satuan + ')', data: targets, backgroundColor: 'rgba(59, 130, 246, 0.5)', borderColor: 'rgb(59, 130, 246)', borderWidth: 2, borderRadius: 8 },
+              { label: 'Realisasi (' + satuan + ')', data: realizations, backgroundColor: 'rgba(16, 185, 129, 0.8)', borderColor: 'rgb(16, 185, 129)', borderWidth: 2, borderRadius: 8 }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { position: 'top' } }
+          }
+        });
+      }
+
+      const cardsGrid = document.getElementById('macroCardsGrid');
+      if (cardsGrid) {
+        cardsGrid.innerHTML = '';
+        filtered.forEach(item => {
+          cardsGrid.innerHTML += `
+            <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-blue-600 dark:text-blue-400">Tahun ${item.tahun}</span>
+                <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 mt-1 mb-3">${item.indikator}</h4>
+              </div>
+              <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-center">
+                <div class="bg-blue-50 dark:bg-blue-950/40 p-2.5 rounded-xl">
+                  <span class="block text-[10px] text-slate-500 font-semibold uppercase">Target</span>
+                  <span class="text-sm font-black text-blue-600">${item.target} ${item.satuan}</span>
+                </div>
+                <div class="bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl">
+                  <span class="block text-[10px] text-slate-500 font-semibold uppercase">Realisasi</span>
+                  <span class="text-sm font-black text-emerald-600">${item.realisasi} ${item.satuan}</span>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+    }
+
+    // Render Galeri Foto
+    function renderGallery() {
+      const galleryGrid = document.getElementById('publicGalleryGrid');
+      if (!galleryGrid) return;
+      galleryGrid.innerHTML = '';
+      if (!galleryDataStore || galleryDataStore.length === 0) {
+        galleryGrid.innerHTML = '<div class="col-span-full text-center py-10 text-slate-400 text-sm">Belum ada foto galeri.</div>';
+        return;
+      }
+      galleryDataStore.forEach(photo => {
+        galleryGrid.innerHTML += `
+          <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm group">
+            <div class="h-52 overflow-hidden relative">
+              <img src="${photo.url}" alt="${photo.judul}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </div>
+            <div class="p-4">
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white line-clamp-1">${photo.judul}</h4>
+              <p class="text-xs text-slate-500 mt-1">Dokumentasi Bappeda Kabupaten OKI</p>
+            </div>
+          </div>`;
+      });
     }
 
     // Admin Login Handler
@@ -646,9 +768,11 @@
       });
     }
 
-    // Jalankan fetch saat DOM siap
+    // Jalankan inisialisasi saat DOM siap
     document.addEventListener("DOMContentLoaded", () => {
       fetchDocsFromSheets();
+      initMacroSection();
+      renderGallery();
     });
   </script>
 </body>
