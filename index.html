@@ -462,4 +462,194 @@
 
   <!-- FOOTER -->
   <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="text-white font-bold text-lg mb-3">BAPPEDA KAB. OKI</h3>
+        <p class="text-xs leading-relaxed text-slate-400">
+          Badan Perencanaan Pembangunan Daerah Kabupaten Ogan Komering Ilir<br>
+          Komplek Perkantoran Pemkab OKI, Kayuagung, Sumatera Selatan.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-white font-bold text-sm mb-3">Tautan Cepat</h3>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#dokumen" class="hover:text-white transition">Dokumen Perencanaan</a></li>
+          <li><a href="#indikator" class="hover:text-white transition">Indikator Makro</a></li>
+          <li><a href="#portal-aplikasi" class="hover:text-white transition">Portal Aplikasi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-bold text-sm mb-3">Hubungi Kami</h3>
+        <p class="text-xs text-slate-400">Email: okibappeda@gmail.com</p>
+        <p class="text-xs text-slate-400 mt-1">Instagram: @bappeda.oki</p>
+        <p class="text-xs text-slate-400 mt-1">WhatsApp: 0812-7888-8888</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800 text-center text-xs">
+      &copy; 2026 BAPPEDA Kabupaten Ogan Komering Ilir. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- MODAL LOGIN -->
+  <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+      <button type="button" onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Login Admin Bappeda</h3>
+      <p class="text-xs text-slate-500 mb-6">Masukkan PIN Admin untuk mengakses panel pengelolaan konten.</p>
+      <form onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold mb-1 text-slate-700 dark:text-slate-300">PIN Admin</label>
+          <input type="password" id="adminPinInput" required class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+        </div>
+        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm transition shadow-lg cursor-pointer">
+          Masuk Panel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT UTAMA -->
+  <script>
+    let docsDataStore = [];
+    let currentUser = false;
+
+    // Fetch Dokumen dari Google Sheets Web App Endpoint
+    function fetchDocsFromSheets() {
+      fetch('https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec')
+        .then(response => response.json())
+        .then(data => {
+          docsDataStore = data;
+          renderPublicDocs();
+          if (typeof currentUser !== 'undefined' && currentUser) {
+            renderAdminDocsTable();
+          }
+        })
+        .catch(error => console.error('Error fetching docs:', error));
+    }
+
+    function renderPublicDocs() {
+      const grid = document.getElementById('publicDocsGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      if (!docsDataStore || docsDataStore.length === 0) {
+        grid.innerHTML = '<div class="text-slate-400 text-sm py-4">Belum ada dokumen tersedia.</div>';
+        return;
+      }
+      docsDataStore.forEach(doc => {
+        grid.innerHTML += `
+          <div class="doc-card-item bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="px-3 py-1 bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-300 text-xs font-bold rounded-lg">${doc.Kategori || ''} (${doc["Tahun / Periode"] || ''})</span>
+              <h3 class="font-bold text-sm sm:text-base mt-3 mb-4 line-clamp-2 text-slate-900 dark:text-white">${doc["Judul Dokumen"] || ''}</h3>
+            </div>
+            <a href="${doc["URL File Google Drive / Download"] || '#'}" target="_blank" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-600 dark:hover:bg-blue-700 rounded-xl text-xs flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-download"></i> Unduh Dokumen
+            </a>
+          </div>`;
+      });
+    }
+
+    function scrollDocs(direction) {
+      const container = document.getElementById('publicDocsGrid');
+      if (!container) return;
+      const scrollAmount = 350;
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // Admin Login Handler
+    function handleLogin(e) {
+      e.preventDefault();
+      const pin = document.getElementById('adminPinInput').value;
+      if (pin === '12345' || pin === 'adminOKI') {
+        currentUser = true;
+        closeLoginModal();
+        document.getElementById('adminSection').classList.remove('hidden');
+        document.getElementById('navAdmin').classList.remove('hidden');
+        showToast('Login Admin Berhasil!', 'success');
+        renderAdminDocsTable();
+      } else {
+        showToast('PIN Admin Salah!', 'error');
+      }
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `px-4 py-3 rounded-xl text-white text-xs font-bold shadow-lg transition-all ${type === 'success' ? 'bg-emerald-600' : 'bg-red-600'}`;
+      toast.innerText = message;
+      container.appendChild(toast);
+      setTimeout(() => { toast.remove(); }, 3000);
+    }
+
+    function renderAdminDocsTable() {
+      const tbody = document.getElementById('adminDocsTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      docsDataStore.forEach((d, idx) => {
+        tbody.innerHTML += `
+          <tr>
+            <td class="p-2"><input type="text" value="${d.Kategori || ''}" onchange="docsDataStore[${idx}].Kategori=this.value" class="w-full px-2 py-1.5 border rounded text-xs dark:bg-slate-800"></td>
+            <td class="p-2"><input type="text" value="${d["Tahun / Periode"] || ''}" onchange="docsDataStore[${idx}]["Tahun / Periode"]=this.value" class="w-full px-2 py-1.5 border rounded text-xs dark:bg-slate-800"></td>
+            <td class="p-2"><input type="text" value="${d["Judul Dokumen"] || ''}" onchange="docsDataStore[${idx}]["Judul Dokumen"]=this.value" class="w-full px-2 py-1.5 border rounded text-xs dark:bg-slate-800"></td>
+            <td class="p-2"><input type="text" value="${d["URL File Google Drive / Download"] || ''}" onchange="docsDataStore[${idx}]["URL File Google Drive / Download"]=this.value" class="w-full px-2 py-1.5 border rounded text-xs dark:bg-slate-800"></td>
+            <td class="p-2 text-center"><button type="button" onclick="docsDataStore.splice(${idx},1); renderAdminDocsTable(); renderPublicDocs();" class="px-2.5 py-1 bg-red-600 text-white rounded text-xs"><i class="fa-solid fa-trash"></i></button></td>
+          </tr>`;
+      });
+    }
+
+    function addDocRow() {
+      docsDataStore.push({ Kategori: "RPKPD", "Tahun / Periode": "2026", "Judul Dokumen": "Dokumen Baru", "URL File Google Drive / Download": "#" });
+      renderAdminDocsTable();
+      renderPublicDocs();
+    }
+
+    function submitDocsData() {
+      showToast('Data dokumen berhasil diperbarui secara lokal!', 'success');
+      renderPublicDocs();
+    }
+
+    function switchAdminTab(tabName) {
+      ['Macro', 'Docs', 'Links', 'Hero', 'Gallery'].forEach(t => {
+        const el = document.getElementById('adminTab' + t);
+        const btn = document.getElementById('tabBtn' + t);
+        if (el) el.classList.add('hidden');
+        if (btn) {
+          btn.className = 'px-3.5 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs transition cursor-pointer';
+        }
+      });
+      const activeEl = document.getElementById('adminTab' + tabName.charAt(0).toUpperCase() + tabName.slice(1));
+      const activeBtn = document.getElementById('tabBtn' + tabName.charAt(0).toUpperCase() + tabName.slice(1));
+      if (activeEl) activeEl.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = 'px-3.5 py-2 bg-blue-600 text-white font-bold rounded-xl text-xs transition cursor-pointer';
+      }
+    }
+
+    // Theme Toggle
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        if (document.documentElement.classList.contains('dark')) {
+          themeIcon.className = 'fa-solid fa-sun';
+        } else {
+          themeIcon.className = 'fa-solid fa-moon';
+        }
+      });
+    }
+
+    // Jalankan fetch saat DOM siap
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchDocsFromSheets();
+    });
+  </script>
+</body>
+</html>
