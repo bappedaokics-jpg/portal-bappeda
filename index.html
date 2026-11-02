@@ -852,11 +852,18 @@
     }
 
     // --- DOKUMEN ---
-    function fetchDocsFromSheets() {
-      google.script.run.withSuccessHandler(res => {
-        if (res && res.success) { docsDataStore = res.data; renderPublicDocs(); if(currentUser) renderAdminDocsTable(); }
-      }).getDocuments();
-    }
+  function fetchDocsFromSheets() {
+  fetch('https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec')
+    .then(response => response.json())
+    .then(data => {
+      docsDataStore = data;
+      renderPublicDocs();
+      if (typeof currentUser !== 'undefined' && currentUser) {
+        renderAdminDocsTable();
+      }
+    })
+    .catch(error => console.error('Error fetching docs:', error));
+}
 
     function renderPublicDocs() {
       const grid = document.getElementById('publicDocsGrid');
