@@ -145,7 +145,7 @@
       </div>
     </section>
 
-    <!-- PROFIL ORGANISASI & MEDIA SOSIAL -->
+    <!-- PROFIL ORGANISASI & KALENDER -->
     <section id="profil-organisasi" class="py-12 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -168,7 +168,6 @@
 
           <!-- KALENDER DIGITAL & MEDIA SOSIAL -->
           <div class="lg:col-span-4 space-y-6">
-            <!-- Kalender Digital Widget -->
             <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
               <div class="flex justify-between items-center mb-4">
                 <div>
@@ -183,7 +182,6 @@
               <div class="cal-grid" id="calendarDaysGrid"></div>
             </div>
 
-            <!-- Media Sosial Ringkas -->
             <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
               <span class="text-[10px] font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Media Sosial</span>
               <div class="flex items-center gap-3 mt-3">
@@ -199,7 +197,7 @@
       </div>
     </section>
 
-    <!-- KONTEN UTAMA HALAMAN DEPAN -->
+    <!-- KONTEN UTAMA -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
       
       <!-- REPOSITORI DOKUMEN -->
@@ -244,7 +242,7 @@
         </div>
       </section>
 
-      <!-- PORTAL APLIKASI BAPPEDA OKI -->
+      <!-- PORTAL APLIKASI BAPPEDA OKI (SIMONEV, GEOPLAN, SIPADU) -->
       <section id="portal-aplikasi" class="space-y-6">
         <div class="text-center max-w-3xl mx-auto mb-2">
           <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Sistem Informasi Terpadu</span>
@@ -295,6 +293,31 @@
               <div class="lg:col-span-5 flex flex-col justify-center">
                 <a href="https://script.google.com/macros/s/AKfycbzowWmlO48VoYjx9JYHeeGAytjCyuxcLYeWj8no6Jt-UEQs1zs0YR2xAtfs-sLUZZOcog/exec" target="_blank" class="w-full py-3.5 bg-green-600 hover:bg-green-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
                   <i class="fa-solid fa-external-link-alt"></i> Buka GeoPlan OKI
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION SIPADU OKI (ORANYE) -->
+        <section id="SIPADU" class="mt-6">
+          <div class="bg-gradient-to-r from-amber-700 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden border border-slate-800">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-extrabold uppercase tracking-widest">
+                  <i class="fa-solid fa-database text-amber-400"></i> Sistem Integrasi Proposal & Data Usulan
+                </span>
+                <h3 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                  SIPADU <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300">Kabupaten OKI</span>
+                </h3>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  SIPADU OKI adalah aplikasi web berbasis Google Apps Script yang dirancang untuk secara otomatis memproses, menganalisis, dan mencocokkan ribuan proposal SIPD, POKIR DPRD, serta Musrenbang masyarakat dengan program prioritas regional.
+                </p>
+              </div>
+              <div class="lg:col-span-5 flex flex-col justify-center">
+                <a href="https://script.google.com/macros/s/AKfycbx1Sm2-5KM_J2qunnoFKoWZ4Sk1VRlEYGgwBAR9wEmVoGjciL7-tYbDXpGLf5rjUw__/exec" target="_blank" class="w-full py-3.5 bg-amber-600 hover:bg-amber-500 text-white font-extrabold rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-xl cursor-pointer">
+                  <i class="fa-solid fa-external-link-alt"></i> Buka SIPADU OKI
                 </a>
               </div>
             </div>
@@ -466,7 +489,7 @@
       }
     }
 
-    // Render Web Relevan
+    // Render Web Relevan dari Sheet
     function renderWebLinks() {
       const grid = document.getElementById('publicWebLinksGrid');
       if (!grid) return;
@@ -582,7 +605,6 @@
         document.getElementById('adminSection').classList.remove('hidden');
         document.getElementById('navAdmin').classList.remove('hidden');
         showToast('Login Admin Berhasil!', 'success');
-        renderAdminDocsTable();
       } else {
         showToast('PIN Admin Salah!', 'error');
       }
